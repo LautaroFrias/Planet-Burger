@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #020024;
+  background: linear-gradient(#020024, #380979);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -22,6 +22,10 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.container-fluid{
+  background: linear-gradient(to top, #380979, transparent);
 }
 
 .App-link {
