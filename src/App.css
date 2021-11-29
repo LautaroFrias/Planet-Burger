@@ -28,6 +28,14 @@
   background: linear-gradient(to top, #380979, transparent);
 }
 
+body{
+  background: linear-gradient( #380979,#020024);
+}
+
+h2{
+  color: #f5f5f5;
+}
+
 .App-link {
   color: #61dafb;
 }
