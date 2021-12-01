@@ -2,9 +2,9 @@ import React from 'react';
 
 const CartWidget = () => {
     return (
-    <div>
+    <button>
         <img src = "../imagenes/carrito.png" width="40" alt="carrito"/>
-    </div>    
+    </button>    
     )
 }
 
