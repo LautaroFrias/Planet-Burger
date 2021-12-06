@@ -3,17 +3,17 @@ import ItemCount from "../ItemCount/ItemCount";
 const ItemDetail = ({ product }) => {
   console.log(product);
   return (
-    <div classname="card" style={{ width: "18rem" }}>
+    <div className="card bg-dark text-white" style={{ width: "18rem" }}>
       {product?.length !== 1 ? (
         <div>
           <h2>{product?.nombre}</h2>
-          <img src={product?.img} classname="card-img-top" alt="Imagen" />
-          <div classname="card-body">
+          <img src={product?.img} className="card-img-top" alt="Imagen" />
+          <div className="card bg-dark text-white">
             <h3>Tamaño: {product?.tamaño}</h3>
             <p>Precio: $ {product?.precio}</p>
             <p>{product?.desc}</p>
-            <ItemCount getStock={product?.value.stock} getInitial={1} />
-            <div classname="card-text"></div>
+            <ItemCount stock={product?.stock} Initial={1} />
+            <div className="card-text"></div>
           </div>
         </div>
       ) : (

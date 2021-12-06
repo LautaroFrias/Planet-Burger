@@ -6,6 +6,7 @@ const products = [
     desc: "carne 170gr, mayonesa PB, rúcula, cebolla con aceto de frutos rojos, mollejas, cheddar",
     tamaño: "simple",
     img: "/imagenes/menu/1.png",
+    stock: 10,
   },
   {
     id: 2,
@@ -14,6 +15,7 @@ const products = [
     desc: "doble carne, doble cheddar, bbq con miel, cebolla crispy, bondiola de cerdo desmechada",
     tamaño: "doble",
     img: "/imagenes/menu/2.png",
+    stock: 10,
   },
   {
     id: 3,
@@ -22,6 +24,7 @@ const products = [
     desc: "pan tostado al revés con manteca, doble carne, triple cheddar, panceta sweet, cebolla morada, salsa PB",
     tamaño: "doble",
     img: "/imagenes/menu/3.png",
+    stock: 10,
   },
   {
     id: 4,
@@ -30,6 +33,7 @@ const products = [
     desc: "hamburguesa de chorizo, mayonesa de chimichurri ahumada, rúcula, queso lincoln, doble panceta",
     tamaño: "simple",
     img: "/imagenes/menu/4.png",
+    stock: 10,
   },
   {
     id: 5,
@@ -38,6 +42,7 @@ const products = [
     desc: "pan negro, salmon burguer 170gr, salsa PB, ananá grillada, palta + tomate + cilantro, cebolla morada, brotes frescos",
     tamaño: "simple",
     img: "/imagenes/menu/5.png",
+    stock: 10,
   },
   {
     id: 6,
@@ -46,6 +51,7 @@ const products = [
     desc: "200gr de carne, langostinos, togarashi, queso filadelfia, shitakes salsa, teriyaki, palta, cebolla de verdeo",
     tamaño: "simple",
     img: "/imagenes/menu/6.png",
+    stock: 10,
   },
 ];
 

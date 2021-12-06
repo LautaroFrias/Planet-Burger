@@ -16,7 +16,7 @@ const ItemDetailContainer = () => {
 
   return (
     <div className="ListItem">
-      {(product.length > 0) & <ItemDetail item={product} />}
+      <ItemDetail product={product} />
     </div>
   );
 };

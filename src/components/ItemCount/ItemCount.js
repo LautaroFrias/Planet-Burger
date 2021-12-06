@@ -1,36 +1,54 @@
-import React, {useState} from 'react';
+import React, { useState } from "react";
 
-const ItemCount = ({onAdd, stock, initial}) => {
-  
+const ItemCount = ({ onAdd, stock, initial }) => {
   const [count, setCount] = useState(1);
- 
-  const Incrementar = () => {
-    if (count < 5) 
-    {
-      setCount (count + 1);  
-    }  
-  }
-  const Decrementar = () => {
-    if (count > 1)
-    {
-      setCount(count - 1);
-    }else{
-      setCount(0);
-      alert('No se puede utilizar numeros negativos')
+
+  const incrementar = () => {
+    if (count < stock) {
+      setCount(count + 1);
     }
-  }
+  };
+  const decrementar = () => {
+    if (count > 0) {
+      setCount(count - 1);
+    } else {
+      alert("No se puede utilizar numeros negativos");
+    }
+  };
 
   return (
     <div>
-       <button onClick={Incrementar} type='button' className='btn btn-primary btn-lg'> + </button>
-       <span> {count} </span>
-       <button onClick={Decrementar} type='button' className='btn btn-primary btn-lg'> - </button>
+      <button
+        onClick={incrementar}
+        type="button"
+        className="btn btn-primary btn-lg"
+      >
+        {" "}
+        +{" "}
+      </button>
+      <span> {count} </span>
+      <button
+        onClick={decrementar}
+        type="button"
+        className="btn btn-primary btn-lg"
+      >
+        {" "}
+        -{" "}
+      </button>
       <div>
-        <button onClick={onAdd} type='button' className='btn btn-warning btn-lg'>Agregar al carrito</button>
+        <button
+          onClick={onAdd}
+          type="button"
+          className="btn btn-warning btn-lg"
+        >
+          Agregar al carrito
+        </button>
       </div>
-      <span>Stock: {stock} Initial: {initial} </span>
+      <span>
+        Stock: {stock} Initial: {initial}{" "}
+      </span>
     </div>
-  )
-}
+  );
+};
 
-export default ItemCount
+export default ItemCount;
