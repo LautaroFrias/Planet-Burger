@@ -1,13 +1,27 @@
-import React from "react";
-import ItemCount from "../ItemCount/ItemCount";
 import ItemList from "../ItemList/ItemList";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { getCategory } from "../Products/Products";
 
 const ItemListContainer = ({ greeting }) => {
+  const [listProduct, setListProduct] = useState([]);
+  const {categoryId} = useParams();
+
+  useEffect(() => {
+    const list = getCategory(categoryId);
+
+      list.then((response) => {
+        console.log(categoryId);
+      setListProduct(response);
+    }).catch((error) => {
+      console.log(error)
+    });
+  }, [categoryId]);
+
   return (
-    <div>
-      <h2>{greeting}</h2>
-      <ItemList product="products" />
-      {/* <ItemCount stock='5' initial='1' onAdd='Gracias por su compra'/> */}
+    <div className="ItemListContainer">
+      <h1>{greeting}</h1>
+      <ItemList products={listProduct} />
     </div>
   );
 };

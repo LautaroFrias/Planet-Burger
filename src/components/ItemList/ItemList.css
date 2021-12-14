@@ -1,3 +1,5 @@
-.ListGroup {
+.listProduct {
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }

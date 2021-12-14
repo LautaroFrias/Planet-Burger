@@ -1,5 +1,6 @@
 import React from "react";
 import CartWidget from "../Cartwidget/CartWidget";
+import { Link } from "react-router-dom";
 
 function NavBar() {
   return (
@@ -16,25 +17,19 @@ function NavBar() {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <a className="navbar-brand" href="/#">
+        <Link to={"/"} href="/#">
           <img src="../imagenes/logo.png" width="50" alt="logo_burger" />
-        </a>
+        </Link>
         <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
           <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="/#">
-                Menú
-              </a>
+              <Link to={"/"} className="btn btn-primary">
+                Home
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/#">
-                Categoría A
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/#">
-                Categoría B
-              </a>
+              <Link to={"/category/1"} className="btn btn-primary">Hamburguesas</Link>
+              <Link to={"/category/2"} className="btn btn-primary">Papas Fritas</Link>
             </li>
           </ul>
         </div>

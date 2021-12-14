@@ -4,7 +4,7 @@ const ItemDetail = ({ product }) => {
   console.log(product);
   return (
     <div className="card bg-dark text-white" style={{ width: "18rem" }}>
-      {product?.length !== 1 ? (
+      {product?.length !== 0 ? (
         <div>
           <h2>{product?.nombre}</h2>
           <img src={product?.img} className="card-img-top" alt="Imagen" />
@@ -12,12 +12,21 @@ const ItemDetail = ({ product }) => {
             <h3>Tamaño: {product?.tamaño}</h3>
             <p>Precio: $ {product?.precio}</p>
             <p>{product?.desc}</p>
+            <p>Categoria: {product?.categoria}</p>
             <ItemCount stock={product?.stock} Initial={1} />
             <div className="card-text"></div>
           </div>
         </div>
       ) : (
-        <div>Cargando...</div>
+        <div className="text-center">
+          <div
+            className="spinner-border"
+            style={{ width: "3rem", height: "3rem" }}
+            role="status"
+          >
+            <span className="visually-hidden">Loading...</span>
+          </div>
+        </div>
       )}
     </div>
   );

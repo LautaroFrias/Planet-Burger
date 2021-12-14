@@ -1,26 +1,35 @@
 import "./ItemList.css";
 import Item from "../Item/Item";
-import { getProducts } from "../Products/Products";
-import { useEffect, useState } from "react";
 
-const ItemList = () => {
-  const [product, setProduct] = useState([]);
-
-  useEffect(() => {
-    getProducts().then((products) => {
-      setProduct(products);
-    });
-  }, []);
-
+const ItemList = ({products}) => {
   return (
-    <div>
-      <ul className="listItem">
-        {product.map((product) => (
-          <Item key={product.nombre} product={product} />
-        ))}
-      </ul>
-    </div>
-  );
-};
-
+      <div className="listProduct">
+        {console.log(products)}
+        {products.length !== 0? (
+          products.map((item) => <Item key={item.id} product={item} />)
+        ) : (
+        <div className="text-center">
+        <div
+          className="spinner-border"
+          style={{ width: "3rem", height: "3rem" }}
+          role="status"
+        >
+          <span className="visually-hidden">Loading...</span>
+        </div>
+      </div> 
+        )}
+      </div>
+  )
+}
 export default ItemList;
+
+
+<div className="text-center">
+          <div
+            className="spinner-border"
+            style={{ width: "3rem", height: "3rem" }}
+            role="status"
+          >
+            <span className="visually-hidden">Loading...</span>
+          </div>
+        </div> 
