@@ -93,25 +93,23 @@ const products = [
 
 export const getCategory = (category = "") => {
   if (category !== "") {
-      return new Promise((resolve, reject) => {
-          const product = products.filter(
-              (prod) => parseInt(prod.categoria) === parseInt(category)
-          );
-          setTimeout(() => {
-              resolve(product);
-              reject("No se pueden cargar los productos");
-          }, 500);
-      });
+    return new Promise((resolve, reject) => {
+      const product = products.filter((prod) => parseInt(prod.categoria) === parseInt(category));
+      setTimeout(() => {
+        resolve(product);
+        reject("No se pueden cargar los productos");
+      }, 500);
+    });
   } else {
-      return new Promise((resolve, reject) => {
-              setTimeout(() => {
-                  resolve(products);
-                  reject("No se pueden cargar los productos");
-              }, 1000);
-      });
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(products);
+        reject("No se pueden cargar los productos");
+      }, 1000);
+    });
   }
 };
-  
+
 export const getProducts = () => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {

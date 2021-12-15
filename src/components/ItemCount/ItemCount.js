@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const ItemCount = ({ onAdd, stock }) => {
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState(0);
 
   const incrementar = () => {
     if (count < stock) {
@@ -28,16 +28,17 @@ const ItemCount = ({ onAdd, stock }) => {
         {" "}
         -{" "}
       </button>
-      <button onClick={() => onAdd(count)} type='button' className='btn btn-warning btn-lg'>
-        Agregar al carrito
-      </button>
-      <Link to={"/"} className='btn btn-primary btn-lg'>
+      {count > 0 && (
+        <Link to={"/cart"}>
+          <button onClick={() => onAdd(count)} type='button' className='btn btn-warning btn-lg'>
+            Agregar al carrito
+          </button>
+        </Link>
+      )}
+
+      <Link to={"/"} className='btn btn-success btn-lg'>
         Regresar
       </Link>
-      <Link to={"/cart"} className='btn btn-success btn-lg'>
-        Ir al Carrito
-      </Link>
-      <span>Stock:{stock}</span>
     </div>
   );
 };
