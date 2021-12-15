@@ -1,7 +1,10 @@
 import ItemCount from "../ItemCount/ItemCount";
 
 const ItemDetail = ({ product }) => {
-  console.log(product);
+  const addToCart = (count) => {
+    console.log(`agregado al carrito ${count}`);
+  };
+
   return (
     <div className="card bg-dark text-white" style={{ width: "18rem" }}>
       {product?.length !== 0 ? (
@@ -13,7 +16,7 @@ const ItemDetail = ({ product }) => {
             <p>Precio: $ {product?.precio}</p>
             <p>{product?.desc}</p>
             <p>Categoria: {product?.categoria}</p>
-            <ItemCount stock={product?.stock} Initial={1} />
+            <ItemCount onAdd={addToCart} stock={product?.stock} />
             <div className="card-text"></div>
           </div>
         </div>

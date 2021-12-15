@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import NavBar from "./components/NavBar/NavBar";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
+import ItemCartContainer from "./components/ItemCartContainer/ItemCartContainer";
 
 function App() {
   return (
@@ -19,9 +20,9 @@ function App() {
           <Route path="/detail/:paramId">
             <ItemDetailContainer />
           </Route>
-          <body>
-            <img src="../imagenes/2.jpg" alt="astronauta_jpg" />
-          </body>
+          <Route path="/cart">
+            <ItemCartContainer />
+          </Route>
         </Switch>
       </BrowserRouter>
     </div>

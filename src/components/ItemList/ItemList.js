@@ -14,7 +14,7 @@ const ItemList = ({products}) => {
           style={{ width: "3rem", height: "3rem" }}
           role="status"
         >
-          <span className="visually-hidden">Loading...</span>
+          <span className="visually-hidden"></span>
         </div>
       </div> 
         )}
@@ -27,9 +27,9 @@ export default ItemList;
 <div className="text-center">
           <div
             className="spinner-border"
-            style={{ width: "3rem", height: "3rem" }}
+            style={{ width: "3rem", height: "3rem", color: "whitesmoke" }}
             role="status"
           >
-            <span className="visually-hidden">Loading...</span>
+            <span className="visually-hidden"></span>
           </div>
         </div> 
