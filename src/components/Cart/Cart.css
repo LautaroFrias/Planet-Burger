@@ -1,0 +1,9 @@
+.CartProducts{
+    margin: 3rem;
+    padding-bottom: 2rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: space-around;
+}
