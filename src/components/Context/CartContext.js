@@ -1,88 +1,60 @@
-import React, { useState, useContext } from "react";
-import NotificationContext from "../Context/NotificationContext";
+import React, { createContext, useContext, useState } from "react";
 
-const CartContext = React.createContext([]);
+const CartContexto = createContext();
 
-export const CartContextProvider = ({ children }) => {
-  const [Item, setItem] = useState([]);
-  const { setNotification } = useContext(NotificationContext);
+export const UseCart = () => {
+  return useContext(CartContexto);
+};
 
-  const addItem = (item, amount) => {
-    const product = {
-      id: item.id,
-      nombre: item.nombre,
-      precio: item.precio,
-      amount: amount,
-      tamaño: item.tamaño,
-      img: item.img,
-    };
-    setItem([...Item, product]);
-  };
-
-  const addItemById = (product, count, stock) => {
-    if (isInCart(product)) {
-      let prod = product.find((el) => el.id === product);
-      const sum = (it1, it2) => {
-        return it1 + it2;
-      };
-      if (sum(prod.amount, count) <= stock) {
-        prod.amount += count;
-        setNotification("success", `Se agregó al carrito ${count} unidades`);
-      } else {
-        setNotification("error", `No quedan mas unidades disponibles`);
-      }
+export const CarritoContexto = ({ children }) => {
+  const [cart, setCart] = useState([]);
+  console.log(cart);
+  const addItem = (obj) => {
+    if (!IsIn(obj.id)) {
+      setCart([...cart, obj]);
+    } else {
+      cart.forEach((product, index) => {
+        if (product.id === obj.id) {
+          cart[index].amount = product.amount + obj.amount;
+          setCart([...cart]);
+        }
+      });
     }
   };
 
-  const countItems = () => {
-    let count = 0;
-    Item.forEach((prod) => {
-      count += prod.amount;
-    });
-    console.log(count);
-    return count;
-  };
-  countItems();
-
-  const removeItem = (itemId) => {
-    const deleteProduct = Item.filter((product) => product.id === itemId);
-    setItem(deleteProduct);
+  const IsIn = (id) => {
+    const isIqual = cart.find((product) => product.id === id);
+    return isIqual === undefined ? false : true;
   };
 
-  const totalSum = () => {
+  const removeItemFromArr = (id) => {
+    const deleteProduct = cart.filter((product) => product.id !== id);
+    setCart(deleteProduct);
+  };
+
+  const CalculatePrice = () => {
     let total = 0;
-    Item.forEach(({ amount, precio }) => {
+    cart.forEach(({ amount, precio }) => {
       total = total + amount * precio;
     });
     return total;
   };
 
-  const isInCart = (id) => {
-    const isIqual = Item.find((product) => product.id === id);
-    return isIqual === undefined ? false : true;
-  };
-  console.log(Item);
-
-  const clear = () => {
-    setItem([]);
+  const deleteAllCart = () => {
+    setCart([]);
   };
 
   return (
-    <CartContext.Provider
+    <CartContexto.Provider
       value={{
-        Item,
+        cart,
         addItem,
-        removeItem,
-        clear,
-        isInCart,
-        addItemById,
-        countItems,
-        totalSum,
+        removeItemFromArr,
+        CalculatePrice,
+        deleteAllCart,
       }}
     >
       {children}
-    </CartContext.Provider>
+    </CartContexto.Provider>
   );
 };
-
-export default CartContext;

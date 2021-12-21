@@ -1,16 +1,15 @@
 import React from "react";
 import NotificationContext from "../Context/NotificationContext";
-import CartContext from "../Context/CartContext";
+import { UseCart } from "../Context/CartContext";
 import { useContext } from "react";
 
 const ItemCart = ({ product }) => {
-  const { removeItem } = useContext(CartContext);
+  const { removeItemFromArr } = UseCart();
   const { setNotification } = useContext(NotificationContext);
 
   const removeIt = () => {
-    removeItem(product?.id);
+    removeItemFromArr(product.id);
     setNotification("error", `Producto eliminado de tu carrito`);
-    removeItem(product);
   };
 
   return (

@@ -5,34 +5,34 @@ import ItemListContainer from "./components/ItemListContainer/ItemListContainer"
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
 import Notification from "./components/Notification/Notification";
 import { NotificationContextProvider } from "./components/Context/NotificationContext";
-import { CartContextProvider } from "./components/Context/CartContext";
+import { CarritoContexto } from "./components/Context/CartContext";
 import Cart from "./components/Cart/Cart";
 
 function App() {
   return (
-    <div className='App'>
-      <NotificationContextProvider>
-        <CartContextProvider>
+    <div className="App">
+      <CarritoContexto>
+        <NotificationContextProvider>
           <BrowserRouter>
             <NavBar />
             <Notification />
             <Switch>
-              <Route exact path='/'>
-                <ItemListContainer greeting='Menú' />
+              <Route exact path="/">
+                <ItemListContainer greeting="Menú" />
               </Route>
-              <Route path='/category/:categoryId'>
+              <Route path="/category/:categoryId">
                 <ItemListContainer />
               </Route>
-              <Route path='/detail/:paramId'>
+              <Route path="/detail/:paramId">
                 <ItemDetailContainer />
               </Route>
-              <Route path='/cart'>
+              <Route path="/cart">
                 <Cart />
               </Route>
             </Switch>
           </BrowserRouter>
-        </CartContextProvider>
-      </NotificationContextProvider>
+        </NotificationContextProvider>
+      </CarritoContexto>
     </div>
   );
 }

@@ -1,13 +1,12 @@
 import ItemCount from "../ItemCount/ItemCount";
 import NotificationContext from "../Context/NotificationContext";
-import CartContext from "../Context/CartContext";
+import  { UseCart } from "../Context/CartContext";
 import { useState, useContext } from "react";
 
 const ItemDetail = ({ product }) => {
   const [count, setCount] = useState(0);
-  const { addItem } = useContext(CartContext);
-  const { addItemById } = useContext(CartContext);
-  const { isInCart } = useContext(CartContext);
+  const { addItem } = UseCart()
+ 
   const { setNotification } = useContext(NotificationContext);
 
   const addToCart = (product) => {
@@ -16,12 +15,11 @@ const ItemDetail = ({ product }) => {
     itemAdd(product);
   };
   const itemAdd = (count) => {
-    if (isInCart(product.nombre)) {
-      addItemById(product.id, count, product.stock);
-    } else {
-      addItem(product, count);
+    const dataToSend={...product, amount: count}
+    console.log(dataToSend);
+    addItem(dataToSend)
     }
-  };
+  
 
   return (
     <div className='card bg-dark text-white' style={{ width: "18rem" }}>
