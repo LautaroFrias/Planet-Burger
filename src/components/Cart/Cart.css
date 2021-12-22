@@ -1,5 +1,5 @@
-.CartProducts{
-    margin: 3rem;
+.cartProducts {
+    margin: 5rem;
     padding-bottom: 2rem;
     display: flex;
     flex-direction: row;

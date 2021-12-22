@@ -1,14 +1,15 @@
 import React, { createContext, useContext, useState } from "react";
 
-const CartContexto = createContext();
+const CartContext = createContext();
 
 export const UseCart = () => {
-  return useContext(CartContexto);
+  return useContext(CartContext);
 };
 
 export const CarritoContexto = ({ children }) => {
   const [cart, setCart] = useState([]);
   console.log(cart);
+
   const addItem = (obj) => {
     if (!IsIn(obj.id)) {
       setCart([...cart, obj]);
@@ -16,10 +17,11 @@ export const CarritoContexto = ({ children }) => {
       cart.forEach((product, index) => {
         if (product.id === obj.id) {
           cart[index].amount = product.amount + obj.amount;
-          setCart([...cart]);
+          setCart([...cart, obj]);
         }
       });
     }
+    CalculatePrice();
   };
 
   const IsIn = (id) => {
@@ -34,8 +36,8 @@ export const CarritoContexto = ({ children }) => {
 
   const CalculatePrice = () => {
     let total = 0;
-    cart.forEach(({ amount, precio }) => {
-      total = total + amount * precio;
+    cart.forEach((obj) => {
+      total += obj.amount;
     });
     return total;
   };
@@ -45,7 +47,7 @@ export const CarritoContexto = ({ children }) => {
   };
 
   return (
-    <CartContexto.Provider
+    <CartContext.Provider
       value={{
         cart,
         addItem,
@@ -55,6 +57,8 @@ export const CarritoContexto = ({ children }) => {
       }}
     >
       {children}
-    </CartContexto.Provider>
+    </CartContext.Provider>
   );
 };
+
+export default CartContext;

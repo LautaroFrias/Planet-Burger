@@ -27,9 +27,9 @@ const ItemCart = ({ product }) => {
               />
               <div className='card bg-dark text-white'>
                 <h3>Tamaño: {product?.tamaño}</h3>
-                <p>Precio: $ {product?.precio}</p>
+                <h4>Precio: $ {product?.precio * product?.amount}</h4>
                 <button className='btn btn-danger' onClick={removeIt}>
-                  Eliminar
+                  Eliminar 🚮
                 </button>
               </div>
             </div>
