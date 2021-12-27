@@ -1,25 +1,63 @@
 import ItemList from "../ItemList/ItemList";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getCategory } from "../Products/Products";
+import { db } from "../../services/firebase";
+import { collection, getDocs, query, where } from "firebase/firestore";
 
 const ItemListContainer = ({ greeting }) => {
   const [listProduct, setListProduct] = useState([]);
-  const {categoryId} = useParams();
+  const { categoryId } = useParams();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const list = getCategory(categoryId);
+    if (!categoryId) {
+      setLoading(true);
+      getDocs(collection(db, "items"))
+        .then((querySnapshot) => {
+          console.log(querySnapshot);
+          const products = querySnapshot.docs.map((doc) => {
+            console.log(doc);
+            return { id: doc.id, ...doc.data() };
+          });
+          setListProduct(products);
+        })
+        .catch((error) => {
+          console.log("Error al cargar los items", error);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    } else {
+      console.log(categoryId);
+      setLoading(true);
+      getDocs(query(collection(db, "items"), where("category", "==", "categoryId")))
+        .then((querySnapshot) => {
+          console.log(querySnapshot);
+          const products = querySnapshot.docs.map((doc) => {
+            console.log(doc);
+            return { id: doc.id, ...doc.data() };
+          });
+          setListProduct(products);
+        })
+        .catch((error) => {
+          console.log("Error al cargar los items", error);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    }
 
-      list.then((response) => {
-        console.log(categoryId);
-      setListProduct(response);
-    }).catch((error) => {
-      console.log(error)
-    });
+    return () => {
+      setListProduct([]);
+    };
   }, [categoryId]);
 
+  if (loading) {
+    return <h1>Loading...</h1>;
+  }
+
   return (
-    <div className="ItemListContainer">
+    <div className='ItemListContainer'>
       <h1>{greeting}</h1>
       <ItemList products={listProduct} />
     </div>

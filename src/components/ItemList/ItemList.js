@@ -4,7 +4,6 @@ import Item from "../Item/Item";
 const ItemList = ({ products }) => {
   return (
     <div className='listProduct'>
-      {console.log(products)}
       {products.length !== 0 ? (
         products.map((item) => <Item key={item.id} product={item} />)
       ) : (

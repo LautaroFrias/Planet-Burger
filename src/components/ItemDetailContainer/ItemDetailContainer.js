@@ -1,26 +1,39 @@
-import { useState, useEffect } from "react";
 import ItemDetail from "../ItemDetail/ItemDetail";
-import "../ItemList/ItemList.css";
-import { getProductById } from "../Products/Products";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { db } from "../../services/firebase";
+import { getDoc, doc } from "firebase/firestore";
 
 const ItemDetailContainer = () => {
   const [product, setProduct] = useState([]);
-
+  const [loading, setLoading] = useState(true);
   const { paramId } = useParams();
-  console.log(paramId);
+
   useEffect(() => {
-    getProductById(paramId)
-      .then((item) => {
-        setProduct(item);
+    setLoading(true);
+    getDoc(doc(db, "items", paramId))
+      .then((querySnapshot) => {
+        const product = { id: querySnapshot.id, ...querySnapshot.data() };
+        setProduct(product);
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((error) => {
+        console.log("Error searching Item", error);
+      })
+      .finally(() => {
+        setLoading(false);
       });
+
+    return () => {
+      setProduct();
+    };
   }, [paramId]);
 
+  if (loading) {
+    return <h1>Loading...</h1>;
+  }
+
   return (
-    <div className="ItemDetailContainer">
+    <div className='ItemDetailContainer'>
       <ItemDetail product={product} />
     </div>
   );

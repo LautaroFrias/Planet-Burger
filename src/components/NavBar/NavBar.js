@@ -31,10 +31,10 @@ function NavBar() {
               </Link>
             </li>
             <li className='nav-item'>
-              <Link to={"/category/1"} className='btn btn-primary'>
+              <Link to={"/category/hamburguesas"} className='btn btn-primary'>
                 Hamburguesas
               </Link>
-              <Link to={"/category/2"} className='btn btn-primary'>
+              <Link to={"/category/papas"} className='btn btn-primary'>
                 Papas Fritas
               </Link>
             </li>

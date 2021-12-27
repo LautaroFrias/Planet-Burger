@@ -6,7 +6,7 @@ const products = [
     desc: "carne 170gr, mayonesa PB, rúcula, cebolla con aceto de frutos rojos, mollejas, cheddar",
     tamaño: "simple",
     img: "/imagenes/menu/1.png",
-    categoria: 1,
+    categoria: "hamburguesas",
     stock: 10,
   },
   {
@@ -16,7 +16,7 @@ const products = [
     desc: "doble carne, doble cheddar, bbq con miel, cebolla crispy, bondiola de cerdo desmechada",
     tamaño: "doble",
     img: "/imagenes/menu/2.png",
-    categoria: 1,
+    categoria: "hamburguesas",
     stock: 10,
   },
   {
@@ -26,7 +26,7 @@ const products = [
     desc: "pan tostado al revés con manteca, doble carne, triple cheddar, panceta sweet, cebolla morada, salsa PB",
     tamaño: "doble",
     img: "/imagenes/menu/3.png",
-    categoria: 1,
+    categoria: "hamburguesas",
     stock: 10,
   },
   {
@@ -36,7 +36,7 @@ const products = [
     desc: "hamburguesa de chorizo, mayonesa de chimichurri ahumada, rúcula, queso lincoln, doble panceta",
     tamaño: "simple",
     img: "/imagenes/menu/4.png",
-    categoria: 1,
+    categoria: "hamburguesas",
     stock: 10,
   },
   {
@@ -46,7 +46,7 @@ const products = [
     desc: "pan negro, salmon burguer 170gr, salsa PB, ananá grillada, palta + tomate + cilantro, cebolla morada, brotes frescos",
     tamaño: "simple",
     img: "/imagenes/menu/5.png",
-    categoria: 1,
+    categoria: "hamburguesas",
     stock: 10,
   },
   {
@@ -56,7 +56,7 @@ const products = [
     desc: "200gr de carne, langostinos, togarashi, queso filadelfia, shitakes salsa, teriyaki, palta, cebolla de verdeo",
     tamaño: "simple",
     img: "/imagenes/menu/6.png",
-    categoria: 1,
+    categoria: "hamburguesas",
     stock: 10,
   },
   {
@@ -66,7 +66,7 @@ const products = [
     desc: "Porción de papas medianas, con aderezo a elección y sal",
     tamaño: "individual",
     img: "/imagenes/menu/7.png",
-    categoria: 2,
+    categoria: "papas",
     stock: 10,
   },
   {
@@ -76,7 +76,7 @@ const products = [
     desc: "Porción de papas grande, acompañadas de queso cheddar fundido, bacon y verdeo",
     tamaño: "para compartir",
     img: "/imagenes/menu/8.png",
-    categoria: 2,
+    categoria: "papas",
     stock: 10,
   },
   {
@@ -86,7 +86,7 @@ const products = [
     desc: "Porción de papas grande, acompañadas con salsa de queso parmesano , barbacoa y tomillo fresco",
     tamaño: "para compartir",
     img: "/imagenes/menu/9.png",
-    categoria: 2,
+    categoria: "papas",
     stock: 10,
   },
 ];
@@ -94,7 +94,9 @@ const products = [
 export const getCategory = (category = "") => {
   if (category !== "") {
     return new Promise((resolve, reject) => {
-      const product = products.filter((prod) => parseInt(prod.categoria) === parseInt(category));
+      const product = products.filter(
+        (prod) => parseInt(prod.categoria) === parseInt(category)
+      );
       setTimeout(() => {
         resolve(product);
         reject("No se pueden cargar los productos");
