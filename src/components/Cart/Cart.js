@@ -59,9 +59,9 @@ const Cart = () => {
         })
         .finally(() => {
           setTimeout(() => {
-            navigate("/buyOrders");
+            navigate("/BuyOrders");
             deleteAllCart();
-          }, 2500);
+          }, 1500);
         });
     }
   };
@@ -72,7 +72,7 @@ const Cart = () => {
         <ItemCart key={product.id} product={product} />
       ))}
       <div>
-        <h2>Total Productos: {CalculatePrice()}</h2>
+        <h2>Total: ${CalculatePrice()}</h2>
       </div>
       {cart.length === 0 ? (
         <div>

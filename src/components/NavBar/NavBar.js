@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { UseCart } from "../Context/CartContext";
 
 function NavBar() {
-  const { CalculatePrice } = UseCart();
+  const { CalculateAmount } = UseCart();
 
   return (
     <nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
@@ -55,7 +55,7 @@ function NavBar() {
               alignItems: "center",
             }}
           >
-            <span style={{ color: "whitesmoke" }}>{CalculatePrice()}</span>
+            <span style={{ color: "whitesmoke" }}>{CalculateAmount()}</span>
           </div>
         </ul>
       </div>

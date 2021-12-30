@@ -7,6 +7,7 @@ import Notification from "./components/Notification/Notification";
 import { NotificationContextProvider } from "./components/Context/NotificationContext";
 import { CarritoContexto } from "./components/Context/CartContext";
 import Cart from "./components/Cart/Cart";
+import BuyOrders from "./components/BuyOrders/BuyOrders";
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
               <Route path='/category/:categoryId' element={<ItemListContainer />} />
               <Route path='/detail/:paramId' element={<ItemDetailContainer />} />
               <Route path='/cart' element={<Cart />} />
-              <Route path='/buyOrders' element={<buyOrders />} />
+              <Route path='/buyOrders' element={<BuyOrders />} />
             </Routes>
           </BrowserRouter>
         </NotificationContextProvider>

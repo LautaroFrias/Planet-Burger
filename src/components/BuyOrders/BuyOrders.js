@@ -1,12 +1,12 @@
 import { getFirestore, collection, getDocs, orderBy, query } from "firebase/firestore";
-import React, { useContext, useEffect, useState } from "react";
-import Mensaje from "../Mensaje";
+import React, { useEffect, useState } from "react";
+import Mensaje from "../Mensaje/Mensaje";
 import { Link } from "react-router-dom";
-import { CartContext } from "../context/CartContext";
+import { UseCart } from "../../components/Context/CartContext";
 
 const BuyOrders = () => {
   const [order, setOrder] = useState([]);
-  const { userEmail } = useContext(CartContext);
+  const { userEmail } = UseCart();
   const { email } = userEmail;
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const BuyOrders = () => {
     <div>
       <>
         {order.length === 0 ? (
-          <h1>Aún no tenés órdenes de compra</h1>
+          <h1>No hay ordenes de compra agregadas</h1>
         ) : (
           <>
             <h1 style={{ textAlign: "center" }}>
@@ -49,7 +49,9 @@ const BuyOrders = () => {
         )}
       </>
 
-      <Link to='/'>Volver al Home</Link>
+      <Link to={"/"} className='btn btn-primary btn-lg'>
+        Volver a Inicio
+      </Link>
     </div>
   );
 };

@@ -34,10 +34,18 @@ export const CarritoContexto = ({ children }) => {
     setCart(deleteProduct);
   };
 
-  const CalculatePrice = () => {
+  const CalculateAmount = () => {
     let total = 0;
     cart.forEach((obj) => {
       total += obj.amount;
+    });
+    return total;
+  };
+
+  const CalculatePrice = () => {
+    let total = 0;
+    cart.forEach((obj) => {
+      total += obj.amount * obj.precio;
     });
     return total;
   };
@@ -56,6 +64,7 @@ export const CarritoContexto = ({ children }) => {
         cart,
         addItem,
         removeItemFromArr,
+        CalculateAmount,
         CalculatePrice,
         deleteAllCart,
         getUser,
