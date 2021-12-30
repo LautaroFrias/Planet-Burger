@@ -37,9 +37,9 @@ const Cart = () => {
 
     newOrder.items.forEach((prod) => {
       getDoc(doc(db, "products", prod.id)).then((docSnap) => {
-        if (docSnap.data().stock >= prod.amount) {
+        if (docSnap.data.stock >= prod.amount) {
           batch.update(doc(db, "products", docSnap.id), {
-            stock: docSnap.data().stock - prod.amount,
+            stock: docSnap.data.stock - prod.amount,
           });
         } else {
           outOfStock.push({ id: docSnap.id, ...docSnap.data() });
