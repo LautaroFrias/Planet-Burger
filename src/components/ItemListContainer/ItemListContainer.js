@@ -28,9 +28,8 @@ const ItemListContainer = ({ greeting }) => {
           setLoading(false);
         });
     } else {
-      console.log(categoryId);
       setLoading(true);
-      getDocs(query(collection(db, "items"), where("category", "==", "categoryId")))
+      getDocs(query(collection(db, "items"), where("categoria", "==", categoryId)))
         .then((querySnapshot) => {
           console.log(querySnapshot);
           const products = querySnapshot.docs.map((doc) => {

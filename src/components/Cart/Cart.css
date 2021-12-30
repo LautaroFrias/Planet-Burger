@@ -1,5 +1,6 @@
-.cartProducts {
-    margin: 5rem;
+.cartProducts{
+    min-height: 100vh;
+    margin: 3rem;
     padding-bottom: 2rem;
     display: flex;
     flex-direction: row;

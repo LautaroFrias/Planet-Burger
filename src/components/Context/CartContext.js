@@ -8,7 +8,7 @@ export const UseCart = () => {
 
 export const CarritoContexto = ({ children }) => {
   const [cart, setCart] = useState([]);
-  console.log(cart);
+  const [userEmail, setUserEmail] = useState("");
 
   const addItem = (obj) => {
     if (!IsIn(obj.id)) {
@@ -46,6 +46,10 @@ export const CarritoContexto = ({ children }) => {
     setCart([]);
   };
 
+  const getUser = (form) => {
+    setUserEmail(form);
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -54,6 +58,8 @@ export const CarritoContexto = ({ children }) => {
         removeItemFromArr,
         CalculatePrice,
         deleteAllCart,
+        getUser,
+        userEmail,
       }}
     >
       {children}
