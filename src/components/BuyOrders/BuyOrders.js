@@ -43,7 +43,7 @@ const BuyOrders = () => {
               Acá podes visualizar todos tus tickets de compra! 🚀
             </h1>
             {order.map((ord) => (
-              <Mensaje key={ord.id} ord={ord} />
+              <Mensaje key={ord?.id} ord={ord} />
             ))}
           </>
         )}

@@ -4,7 +4,7 @@ import { UseCart } from "../Context/CartContext";
 import { useContext } from "react";
 
 const ItemCart = ({ product }) => {
-  const { removeItemFromArr } = UseCart();
+  const { removeItemFromArr, CalculatePrice } = UseCart();
   const { setNotification } = useContext(NotificationContext);
 
   const removeIt = () => {
@@ -27,7 +27,8 @@ const ItemCart = ({ product }) => {
               />
               <div className='card bg-dark text-white'>
                 <h3>Tamaño: {product?.tamaño}</h3>
-                <h4>Precio: $ {product?.precio * product?.amount}</h4>
+                <p>Precio: ${product?.precio}</p>
+                <h4>Cantidad: {CalculatePrice()} Unidades</h4>
                 <button className='btn btn-danger' onClick={removeIt}>
                   Eliminar 🚮
                 </button>

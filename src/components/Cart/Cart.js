@@ -1,11 +1,12 @@
 import ItemCart from "../ItemCart/ItemCart";
 import { useState } from "react";
 import { UseCart } from "../Context/CartContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { collection, addDoc, doc, writeBatch, getDoc, getFirestore } from "firebase/firestore";
 
 const Cart = () => {
   const { cart, CalculatePrice, deleteAllCart, getUser } = UseCart();
+  let navigate = useNavigate();
   const [loadingOrder, setLoadingOrder] = useState(false);
   const [form, getForm] = useState({ nombre: "", email: "" });
 
@@ -58,7 +59,7 @@ const Cart = () => {
         })
         .finally(() => {
           setTimeout(() => {
-            <Link to={"/buyOrders"} />;
+            navigate("/buyOrders");
             deleteAllCart();
           }, 2500);
         });
@@ -93,7 +94,8 @@ const Cart = () => {
           <input onChange={llenarFormulario} type='text' name='nombre' placeholder='nombre' />
           <button
             className='btn btn-success'
-            onClick={cart?.length === 0 || form.nombre === "" || form.email === ""}
+            disabled={cart?.length === 0 || form.nombre === "" || form.email === ""}
+            style={{ color: "white", textDecoration: "none" }}
           >
             Finalizar compra
           </button>

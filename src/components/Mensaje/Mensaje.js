@@ -17,13 +17,13 @@ const Mensaje = ({ ord }) => {
         {ord.items.map((prod, index) => (
           <ul key={index}>
             <li>
-              {prod.nombre} ${prod.precio} x {prod.amount}
+              {prod?.nombre} ${prod?.precio} x {prod?.amount}
             </li>
-            <img width={150} src={prod.img} alt={prod.nombre} />
+            <img width={150} src={prod?.img} alt={prod?.nombre} />
           </ul>
         ))}
       </h2>
-      <h2 style={{ fontSize: "15px" }}>Total: ${ord.CalculatePrice()}</h2>
+      <h2 style={{ fontSize: "15px" }}>Total: ${ord?.CalculatePrice()}</h2>
     </div>
   );
 };
