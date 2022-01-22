@@ -17,7 +17,7 @@ export const CarritoContexto = ({ children }) => {
       cart.forEach((product, index) => {
         if (product.id === obj.id) {
           cart[index].amount = product.amount + obj.amount;
-          setCart([...cart, obj]);
+          setCart([...cart]);
         }
       });
     }
