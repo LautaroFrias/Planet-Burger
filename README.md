@@ -1,72 +1,74 @@
-PLANET BURGER - ECOMMERCE
+## `Proyecto`
 
-# Empezamos con Create React App
+PLANET BURGER - Proyecto Final de ReactJs (CODERHOUSE)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[PlanetBurger](https://lautarofrias.github.io/PlanetBurger/) es un e-commerce ficticio, creado y utilizado como proyecto final del curso de JavaScript en CODERHOUSE.
+Este emprendimiento al igual que todos mis proyectos de desarrollo web, se encuentran disponibles dentro de mis [Repositorios](https://github.com/LautaroFrias).
 
-## Available Scripts
+## `Scripts disponibles, Instalación y dependencias`
 
-In the project directory, you can run:
+El proyecto esta inicializado con `npx install create-react-app planetburger-app`.
+
+     Para el Routing utilice, `npm i react-router-dom` para crear los path y casi en su totalidad, la página utiliza Bootstrap en cuanto a estilos se refiere.
+    Para ello, instalamos las dependencias desde la consola `npm install react-bootstrap bootstrap@5.1.3`.
+
+Todas las imágenes, iconos y logos se encuentran dentro de la carpeta `public/imagenes`.
+Preferentemente utilice [Flaticon](https://www.flaticon.es/).
+
+Puedes acceder a la documentación de [React](https://reactjs.org/).
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+La APP inicializa con el comando 'npm start' desde la consola de tu editor de código.
+Abrir [http://localhost:3000](http://localhost:3000) para visualizarlo en el navegador (no obstante esto ocurre automáticamente).
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+La página se recargará si realizamos cambios, como también veremos cualquier " lint errors " en la consola.
 
-### `npm test`
+### `Lenguajes de programacion utilizados`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    HTML
+    CSS
+    JAVASCRIPT
+    REACT JS
 
-### `npm run build`
+Base de datos utilizado:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+     Firebase/Firestore
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## `.env`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Se agregó un archivo .env con los datos necesarios de Firebase para encriptar las credenciales de administración de Firebase.
+Este mismo se encuentra ignorado dentro del archivo `.gitignore`.
 
-### `npm run eject`
+Si te interesa visualizar o inicializar el proyecto, encontrarás un archivo con extensión `.env.example`.
+Recordá que estos datos son de ejemplo.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+    REACT_APP_apiKey=asdasdasdasdasd
+    REACT_APP_authDomain=asdasdasd.firebaseapp.com
+    REACT_APP_projectId=asdasdasd
+    REACT_APP_storageBucket=asdasdasd.appspot.com
+    REACT_APP_messagingSenderId=123123123123
+    REACT_APP_appId=1:123123123:web:0ae622ca5bsd9fa27d
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Luego en `firebase.js` se llaman a las variables de entorno de la siguiente forma:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+    apiKey: process.env.REACT_APP_apiKey,
+    authDomain: process.env.REACT_APP_authDomain,
+    projectId: process.env.REACT_APP_projectId,
+    storageBucket: process.env.REACT_APP_storageBucket,
+    messagingSenderId: process.env.REACT_APP_messagingSenderId,
+    appId: process.env.REACT_APP_appId,
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## En este archivo `firebase.js` se inicializa Firebase en la APP.
 
-## Learn More
+Inician tanto la base de datos (DataBase) como asi tambien las credenciales de Firebase.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Para crear un Object del producto deberá realizarse de la siguiente forma:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+    `categoria:`  categoria del producto
+    `desc:` desc del producto para el 'ItemDetail'
+    `img:` URL donde se alojan las imagenes del menú
+    `nombre:` nombre del producto
+    `precio:` precio del producto
+    `stock:` cantidad disponible, se toma desde el 'ItemCount'
+    `tamaño:` tamaño del producto
