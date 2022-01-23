@@ -31,9 +31,9 @@ La página se recargará si realizamos cambios, como también veremos cualquier 
     JAVASCRIPT
     REACT JS
 
-Base de datos utilizado:
+Base de datos utilizada:
 
-     Firebase/Firestore
+    Firebase/Firestore
 
 ## `.env`
 
@@ -96,7 +96,7 @@ El archivo principal del proyecto es App.js, desde aqui se rutea toda la App.
         . '/Cart' se dirige al Carrito con los productos agregados por el usuario
         . '/BuyOrders' es un componente donde se muestran todas las compras realizadas
         segun el email del comprador, el cual `<Mensaje.js>` se encarga del renderizado.
-        Este crea un ticket en Firebase.
+        Este crea un ticket en la Firestore Database (Firebase).
 
 ## Navbar
 
@@ -126,13 +126,13 @@ Para las papas fritas, tambien por su tamaño sea: Individual o Para Compartir.
 
 ### <CartWidget>
 
-Es un componente, el cual es un boton compuesto por un logo de un carrito de compras y un número que va a ir actualizandose
+Este componente, es un boton compuesto por un logo de un carrito de compras y un número que va a ir actualizandose
 a medida que el usuario agregue productos.
 
 ## ItemListContainer
 
 Este componente de estilo container, almacena como children al componente `<ItemList>` el cual muestra una vista simplificada de
-las propiedades de cada producto. Mediante el uso de `hook`, se muestran los productos según su categoría o todos ellos.
+las propiedades de cada producto. Mediante el uso de `hook`, se muestran los productos según su categoría.
 
 ## ItemDetailContainer
 
@@ -142,7 +142,7 @@ para luego volcarlo con un `props` toda la información del mismo.
 
 ## ItemDetail
 
-En este componente contenedor se muestra la información detallada de un producto que selecciona el usuario, ademas de que se le
+En este componente contenedor muestra la información detallada de un producto que selecciona el usuario, ademas de que se le
 agrega como hijo el `<ItemCount>`, el cual tiene la función de aumentar o decrementar la cantidad del producto seleccionado para luego
 enviarlo al carrito mediante el boton `Agregar al carrito` `(/cart)`. El contador va a aumentar hasta la cantidad que tenga como stock el producto
 sin superarlo, del mismo modo va a decrementar, sin llegar ser un número negativo.
@@ -155,8 +155,8 @@ Componente que almacena las funciones de aumentar o decrementar la cantidad del 
 ## Cart
 
 Es el componente donde se van a listar los productos que previamente selecciono el usuario, desde el `<ItemDetail>`.
-En esta instancia podemos `vaciar carrito` y nos da la posibilidad de `volver a Inicio` para volver a repetir el proceso de compra.
-Si en cambio se quisiera eliminar 1 producto en particular, esto se hace mediante el boton `eliminar 🚮`.
+En esta instancia podemos `vaciar carrito` y nos da la posibilidad de `volver a Inicio` para repetir el proceso de compra.
+Si en cambio se quisiera eliminar un producto en particular, esto se hace mediante el boton `eliminar 🚮`.
 Por el contrario, si quisieramos habilitar el boton de `Finalizar compra`, antes deberiamos llenar el formulario, que se trae con la función
 `llenarFormulario` declarada en el `(/cart)`.
 
