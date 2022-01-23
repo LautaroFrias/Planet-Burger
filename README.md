@@ -85,8 +85,6 @@ El archivo principal del proyecto es App.js, desde aqui se rutea toda la App.
 
 ### - Cart
 
-### - Mensaje
-
 ### - BuyOrders
 
         . '/' navega a `<ItemListContainer>`
